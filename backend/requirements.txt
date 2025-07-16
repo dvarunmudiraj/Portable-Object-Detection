@@ -1,11 +1,7 @@
-# PyTorch for YOLO
+ultralytics
 torch
-# List your Python dependencies here for Render deployment
 flask
 gunicorn
-# Add any other dependencies your app requires below
-flask
 flask-cors
-gunicorn
 opencv-python
 numpy
