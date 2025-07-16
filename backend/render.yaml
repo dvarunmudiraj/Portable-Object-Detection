@@ -1,0 +1,18 @@
+# This file tells Render how to run your backend service
+# Docs: https://render.com/docs/yaml-spec
+
+services:
+  - type: web
+    name: backend
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    autoDeploy: true
+    envVars:
+      # Add your environment variables here
+      # - key: VARIABLE_NAME
+      #   value: value_here
+    # Optional: specify static files to publish
+    # staticPublishPath: static/
+    # staticPublishPath: uploads/
