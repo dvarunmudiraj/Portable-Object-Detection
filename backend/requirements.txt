@@ -1,3 +1,5 @@
+# PyTorch for YOLO
+torch
 # List your Python dependencies here for Render deployment
 flask
 gunicorn
