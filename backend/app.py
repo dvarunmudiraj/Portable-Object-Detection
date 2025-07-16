@@ -14,7 +14,11 @@ USERS = {}
 # Load YOLOv8 model
 MODEL_PATH = os.path.join("model", "obj-detect.pt")
 model = YOLO(MODEL_PATH)
-print("YOLOv8 model loaded")
+if torch.cuda.is_available():
+    model.to('cuda')
+    print("YOLOv8 model loaded on GPU")
+else:
+    print("YOLOv8 model loaded on CPU")
 
 streaming = False
 import threading
@@ -38,18 +42,19 @@ def camera_loop():
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
     frame_count = 0
-    frame_skip = 2
-
+    frame_skip = 2  # Process every 2nd frame
+    import time
     while streaming:
         success, frame = cap.read()
         if not success:
+            time.sleep(0.01)
             continue
 
+        frame = cv2.resize(frame, (1280, 720))
         frame = cv2.resize(frame, (640, 480))
         frame_count += 1
         if frame_count % frame_skip != 0:
             continue
-
         results = model.predict(source=frame, stream=False)[0]
         annotated = results.plot()
 
@@ -62,6 +67,7 @@ def camera_loop():
                 }
                 for box in results.boxes
             ]
+        time.sleep(0.01)  # Prevent CPU hogging
     cap.release()
 
 
@@ -104,8 +110,9 @@ def start_stream():
 
 @app.route('/stop_stream', methods=['POST'])
 def stop_stream():
-    global streaming
+    global streaming, latest_frame
     streaming = False
+    latest_frame = None
     return jsonify({"status": "stopped"})
 
 @app.route('/upload', methods=['POST'])
