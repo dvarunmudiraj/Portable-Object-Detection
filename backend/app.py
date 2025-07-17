@@ -150,7 +150,19 @@ def upload_image():
 
     img = cv2.imread(filepath)
     image_height, image_width = img.shape[:2]
-    results = model(img)[0]
+    # Convert numpy image to torch tensor for YOLOv5
+    import torch
+    if isinstance(img, np.ndarray):
+        img_tensor = torch.from_numpy(img)
+        if img_tensor.ndim == 3 and img_tensor.shape[2] == 3:
+            img_tensor = img_tensor.permute(2, 0, 1).float()  # HWC to CHW
+            img_tensor /= 255.0  # Normalize
+            img_tensor = img_tensor.unsqueeze(0)  # Add batch dim
+        else:
+            return jsonify({"error": "Uploaded image must be RGB."}), 400
+    else:
+        return jsonify({"error": "Invalid image format."}), 400
+    results = model(img_tensor)[0]
 
     output = []
     for box in results.boxes:
