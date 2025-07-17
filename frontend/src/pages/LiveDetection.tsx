@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import BASE_URL from "../utils/config";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Pause, Play, Settings } from "lucide-react";
@@ -11,7 +12,7 @@ const LiveDetection = () => {
   const videoRef = useRef<HTMLImageElement>(null);
   const startBackendStream = async () => {
     try {
-      await fetch("http://localhost:5000/start_stream", { method: "POST" });
+      await fetch(`${BASE_URL}/start_stream`, { method: "POST" });
     } catch (err) {
       console.error("Error starting stream:", err);
     }
@@ -19,7 +20,7 @@ const LiveDetection = () => {
   
   const stopBackendStream = async () => {
     try {
-      await fetch("http://localhost:5000/stop_stream", { method: "POST" });
+      await fetch(`${BASE_URL}/stop_stream`, { method: "POST" });
     } catch (err) {
       console.error("Error stopping stream:", err);
     }
@@ -60,7 +61,7 @@ const LiveDetection = () => {
         // Start polling detections after loading ends
         detectionInterval = setInterval(async () => {
           try {
-            const res = await fetch("http://localhost:5000/detections");
+            const res = await fetch(`${BASE_URL}/detections`);
             const data = await res.json();
             console.log("Fetched detections:", data); // ⬅️ Add this line
             setDetections(data);
@@ -135,7 +136,7 @@ const LiveDetection = () => {
                   // />
                   <img
                     ref={videoRef}
-                    src="http://localhost:5000/video_feed"
+                    src={`${BASE_URL}/video_feed`}
                     alt="Live video feed"
                     onError={() => {
                       console.error("Video feed failed to load");

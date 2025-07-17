@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import BASE_URL from "../utils/config";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ImageIcon, UploadCloud } from "lucide-react";
@@ -131,7 +132,7 @@ const Upload = () => {
       const formData = new FormData();
       formData.append("file", file);
   
-      const response = await fetch("http://localhost:5000/upload", {
+      const response = await fetch(`${BASE_URL}/upload`, {
         method: "POST",
         body: formData,
       });
