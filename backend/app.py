@@ -4,7 +4,7 @@ import cv2
 import torch
 import os
 import json
-from ultralytics import YOLO
+import torch
 import time
 import uuid
 
@@ -21,14 +21,12 @@ def save_users(users):
         json.dump(users, f)
 USERS = load_users()
 
-# Load YOLOv8 model
+
+# Load YOLOv5 model
 MODEL_PATH = os.path.join("model", "obj-detection.pt")
-model = YOLO(MODEL_PATH)
-if torch.cuda.is_available():
-    model.to('cuda')
-    print("YOLOv8 model loaded on GPU")
-else:
-    print("YOLOv8 model loaded on CPU")
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+model = torch.hub.load('ultralytics/yolov5', 'custom', path=MODEL_PATH, force_reload=True).to(device)
+print(f"YOLOv5 model loaded on {device.upper()}")
 
 streaming = False
 import threading
@@ -65,18 +63,21 @@ def camera_loop():
         frame_count += 1
         if frame_count % frame_skip != 0:
             continue
-        results = model.predict(source=frame, stream=False)[0]
-        annotated = results.plot()
+        results = model(frame)
+        # YOLOv5 returns a list of results, one per image
+        annotated = results.render()[0]  # Annotated image
+
+        # Extract detection results
+        detection_results = []
+        for *box, conf, cls in results.xyxy[0].tolist():
+            detection_results.append({
+                "label": model.names[int(cls)],
+                "confidence": round(float(conf), 2)
+            })
 
         with frame_lock:
             latest_frame = annotated
-            detection_results = [
-                {
-                    "label": model.names[int(box.cls[0])],
-                    "confidence": round(float(box.conf[0]), 2)
-                }
-                for box in results.boxes
-            ]
+            # detection_results is already set above
         time.sleep(0.01)  # Prevent CPU hogging
     cap.release()
 
