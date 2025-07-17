@@ -9,7 +9,7 @@ import time
 import uuid
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://vobjdetect.vercel.app"])
 USERS_FILE = "users.json"
 def load_users():
     if os.path.exists(USERS_FILE):
