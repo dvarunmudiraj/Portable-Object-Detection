@@ -22,11 +22,13 @@ def save_users(users):
 USERS = load_users()
 
 
-# Load YOLOv5 model
+
+# Load YOLOv5 model from local .pt file
 MODEL_PATH = os.path.join("model", "obj-detection.pt")
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
-model = torch.hub.load('ultralytics/yolov5', 'custom', path=MODEL_PATH, force_reload=True).to(device)
-print(f"YOLOv5 model loaded on {device.upper()}")
+model = torch.load(MODEL_PATH, map_location=device)
+model = model.autoshape() if hasattr(model, 'autoshape') else model  # Ensure compatibility
+print(f"YOLOv5 model loaded from local file on {device.upper()}")
 
 streaming = False
 import threading
