@@ -22,7 +22,7 @@ def save_users(users):
 USERS = load_users()
 
 # Load YOLOv8 model
-MODEL_PATH = os.path.join("model", "obj-detect.pt")
+MODEL_PATH = os.path.join("model", "obj-detection.pt")
 model = YOLO(MODEL_PATH)
 if torch.cuda.is_available():
     model.to('cuda')
