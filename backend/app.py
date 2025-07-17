@@ -2,8 +2,8 @@ from flask import Flask, render_template, Response, request, jsonify
 from flask_cors import CORS
 import cv2
 import torch
-import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), "yolov5"))
+import os
+import json
 from models.experimental import attempt_load
 import os
 import json
