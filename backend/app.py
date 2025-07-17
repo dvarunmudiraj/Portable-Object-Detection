@@ -30,7 +30,7 @@ USERS = load_users()
 # Load YOLOv5 model using local repo
 MODEL_PATH = os.path.join("model", "obj-detection.pt")
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model = attempt_load(MODEL_PATH, map_location=device)
+model = attempt_load(MODEL_PATH, device)
 model.eval()
 print(f"YOLOv5 model loaded from local repo on {device}")
 
