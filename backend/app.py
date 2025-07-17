@@ -2,6 +2,9 @@ from flask import Flask, render_template, Response, request, jsonify
 from flask_cors import CORS
 import cv2
 import torch
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), "yolov5"))
+from models.experimental import attempt_load
 import os
 import json
 import torch
@@ -23,12 +26,13 @@ USERS = load_users()
 
 
 
-# Load YOLOv5 model from local .pt file
+
+# Load YOLOv5 model using local repo
 MODEL_PATH = os.path.join("model", "obj-detection.pt")
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
-model = torch.load(MODEL_PATH, map_location=device)
-model = model.autoshape() if hasattr(model, 'autoshape') else model  # Ensure compatibility
-print(f"YOLOv5 model loaded from local file on {device.upper()}")
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model = attempt_load(MODEL_PATH, map_location=device)
+model.eval()
+print(f"YOLOv5 model loaded from local repo on {device}")
 
 streaming = False
 import threading
