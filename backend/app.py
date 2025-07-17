@@ -4,8 +4,6 @@ import cv2
 import torch
 import os
 import json
-import sys
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "yolov5")))
 from models.experimental import attempt_load
 import os
 import json
