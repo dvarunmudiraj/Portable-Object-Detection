@@ -3,13 +3,23 @@ from flask_cors import CORS
 import cv2
 import torch
 import os
+import json
 from ultralytics import YOLO
 import time
 import uuid
 
 app = Flask(__name__)
 CORS(app)
-USERS = {}
+USERS_FILE = "users.json"
+def load_users():
+    if os.path.exists(USERS_FILE):
+        with open(USERS_FILE, "r") as f:
+            return json.load(f)
+    return {}
+def save_users(users):
+    with open(USERS_FILE, "w") as f:
+        json.dump(users, f)
+USERS = load_users()
 
 # Load YOLOv8 model
 MODEL_PATH = os.path.join("model", "obj-detect.pt")
@@ -191,6 +201,7 @@ def signup():
         return jsonify({"status": "failure", "message": "User already exists"}), 409
 
     USERS[email] = {"password": password, "role": "user", "approved": False}
+    save_users(USERS)
     return jsonify({"status": "pending", "message": "Signup request submitted. Awaiting admin approval."}), 201
 
 # @app.route('/pending_users', methods=['GET'])
