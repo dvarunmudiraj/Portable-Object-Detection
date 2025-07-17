@@ -1,3 +1,3 @@
-const BASE_URL = "http://localhost:5000"; // Flask server URL
+const BASE_URL = import.meta.env.VITE_BACKEND_URL; // Backend URL from .env
 
 export default BASE_URL;
