@@ -174,7 +174,7 @@ const Login = () => {
               </p>
             </div>
 
-            {isLogin && (
+            {/* {isLogin && (
               <div className="mt-4 p-3 bg-gray-50 rounded-lg text-center">
                 <p className="text-sm text-gray-600">
                   <strong>Demo credentials</strong>
@@ -186,7 +186,7 @@ const Login = () => {
                   Admin Password: admin
                 </p>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>
