@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 const LiveDetection = () => {
   const [isStreaming, setIsStreaming] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isStreamActionLoading, setIsStreamActionLoading] = useState(false);
   const [detections, setDetections] = useState<{ label: string; confidence: number }[]>([]);
   const videoRef = useRef<HTMLImageElement>(null);
   const startBackendStream = async () => {
@@ -85,6 +86,7 @@ const LiveDetection = () => {
   
 
   const toggleStream = async () => {
+    setIsStreamActionLoading(true);
     if (isStreaming) {
       await stopBackendStream();
       setIsStreaming(false);
@@ -92,6 +94,7 @@ const LiveDetection = () => {
       await startBackendStream();
       setIsStreaming(true);
     }
+    setIsStreamActionLoading(false);
   };
 
   return (
@@ -115,8 +118,13 @@ const LiveDetection = () => {
               {!isStreaming ? (
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <p className="text-lg font-medium text-slate-500 mb-4">Video feed is paused</p>
-                  <Button onClick={toggleStream}>
-                    <Play className="h-4 w-4 mr-2" /> Start Stream
+                  <Button onClick={toggleStream} disabled={isStreamActionLoading}>
+                    {isStreamActionLoading ? (
+                      <span className="animate-spin-slow mr-2 h-4 w-4 border-2 border-current border-t-transparent rounded-full"></span>
+                    ) : (
+                      <Play className="h-4 w-4 mr-2" />
+                    )}
+                    Start Stream
                   </Button>
                 </div>
               ) : isLoading ? (
@@ -153,8 +161,13 @@ const LiveDetection = () => {
                     size="icon"
                     onClick={toggleStream}
                     className="absolute bottom-4 right-4 bg-white/80 backdrop-blur-sm hover:bg-white"
+                    disabled={isStreamActionLoading}
                   >
-                    <Pause className="h-4 w-4" />
+                    {isStreamActionLoading ? (
+                      <span className="animate-spin-slow h-4 w-4 border-2 border-current border-t-transparent rounded-full"></span>
+                    ) : (
+                      <Pause className="h-4 w-4" />
+                    )}
                   </Button>
 
                   {/* Optional: Static detection boxes (mock UI) */}

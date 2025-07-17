@@ -143,15 +143,17 @@ const Upload = () => {
         return;
       }
       const data = await response.json();
-      if (data.length > 0) {
+      const results = data.results || [];
+      if (results.length > 0) {
         setImageDims({
-          width: data[0].imageWidth,
-          height: data[0].imageHeight
+          width: results[0].imageWidth,
+          height: results[0].imageHeight
         });
+        toast.success("Detection completed successfully!");
+      } else {
+        toast.info("No objects detected in the image.");
       }
-      
-      setResults(data);
-      toast.success("Detection completed successfully!");
+      setResults(results);
     } catch (error) {
       toast.error("Error during detection");
       console.error(error);

@@ -100,10 +100,11 @@ def video_feed():
 @app.route('/start_stream', methods=['POST'])
 def start_stream():
     global streaming
+    global camera_thread
     if not streaming:
         streaming = True
-        thread = threading.Thread(target=camera_loop)
-        thread.start()
+        camera_thread = threading.Thread(target=camera_loop)
+        camera_thread.start()
     return jsonify({"status": "started"})
 
 
@@ -111,8 +112,12 @@ def start_stream():
 @app.route('/stop_stream', methods=['POST'])
 def stop_stream():
     global streaming, latest_frame
+    global camera_thread
     streaming = False
     latest_frame = None
+    # Wait for camera thread to finish
+    if 'camera_thread' in globals() and camera_thread.is_alive():
+        camera_thread.join(timeout=1)
     return jsonify({"status": "stopped"})
 
 @app.route('/upload', methods=['POST'])
@@ -148,7 +153,7 @@ def upload_image():
             "imageHeight": image_height
         })
 
-    return jsonify(output)
+    return jsonify({"success": True, "results": output})
 
 @app.route('/login', methods=['POST'])
 def login():
