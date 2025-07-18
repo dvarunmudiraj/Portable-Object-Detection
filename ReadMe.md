@@ -134,7 +134,10 @@ Portable-Object-Detection/
 📧 [varunmudiraj154@gmail.com](mailto:varunmudiraj154@gmail.com)  
 🔗 [GitHub Profile](https://github.com/dvarunmudiraj)
 
-
 ---
 
-⭐ Star this repo if you find it useful or inspiring!
+## ⭐ Give a Star!
+
+If you liked this project, consider giving it a ⭐ to support my work.
+
+```
