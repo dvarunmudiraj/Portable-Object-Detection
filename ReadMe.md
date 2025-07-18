@@ -38,47 +38,45 @@ model = YOLO("best.pt")
 
 ---
 
-## 📸 Demo Screens
+## 🔐 Authentication Screens
 
-### 🔐 Login & Signup
-
-<p align="center">
-  <img src="assets/signup.png" width="45%" />
-  <img src="assets/login.png" width="45%" />
-</p>
+| 🖼️ Screenshot | Description |
+|--------------|-------------|
+| <img src="assets/signup.png" width="300px"/> | ✍️ **User Sign Up Page** |
+| <img src="assets/login.png" width="300px"/> | 🔐 **User Login Page** |
 
 ---
 
-### 🛡️ Admin Dashboard – Approve or Reject Users
+## 🛠️ Admin Dashboard
 
-<p align="center">
-  <img src="assets/admin-dashboard.png" width="90%" />
-</p>
-
----
-
-### 🖼️ Upload Image for Detection
-
-<p align="center">
-  <img src="assets/upload.png" width="90%" />
-</p>
+| 🖼️ Screenshot | Description |
+|--------------|-------------|
+| <img src="assets/admin-dashboard.png" width="600px"/> | 🧑‍💼 **Admin Panel** for approving or rejecting users |
 
 ---
 
-### ✅ Detection Results
+## 👤 User Dashboard
 
-<p align="center">
-  <img src="assets/detection-results-1.png" width="45%" />
-  <img src="assets/detection-results-2.png" width="45%" />
-</p>
+| 🖼️ Screenshot | Description |
+|--------------|-------------|
+| <img src="assets/user-dashboard.png" width="600px"/> | 🏠 **User Home Dashboard** after admin approval |
 
 ---
 
-### 👤 User Dashboard
+## 📷 Upload Detection Interface
 
-<p align="center">
-  <img src="assets/user-dashboard.png" width="90%" />
-</p>
+| 🖼️ Screenshot | Description |
+|--------------|-------------|
+| <img src="assets/upload.png" width="600px"/> | 📤 **Upload Interface** to submit images for detection |
+
+---
+
+## 🧪 Detection Results (YOLOv8)
+
+| 🖼️ Screenshot | Description |
+|--------------|-------------|
+| <img src="assets/detection1.png" width="300px"/> | 🎯 **Detection Example 1** |
+| <img src="assets/detection2.png" width="300px"/> | 🎯 **Detection Example 2** |
 
 ---
 
