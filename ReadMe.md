@@ -47,7 +47,7 @@ model = YOLO("best.pt")
 
 ### 📸 Step 4: View Detection Results
 ![Detection Result 1](assets/detection-results-1.png)
-![Detection Result 2](assets/detection-detection-results-2.png)
+![Detection Result 2](assets/detection-results-2.png)
 
 ### 🧑‍💼 Step 5: User Dashboard (Access Detection Features)
 ![User Dashboard](assets/user-dashboard.png)
