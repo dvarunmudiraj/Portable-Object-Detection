@@ -134,11 +134,6 @@ Portable-Object-Detection/
 📧 [varunmudiraj154@gmail.com](mailto:varunmudiraj154@gmail.com)  
 🔗 [GitHub Profile](https://github.com/dvarunmudiraj)
 
----
-
-## 🏁 Final Note
-
-If you're an MNC or a tech company hiring for **AI Engineers**, **Web Developers**, or **Full Stack ML Engineers** — this project reflects a strong foundation in building intelligent, production-ready systems.
 
 ---
 
