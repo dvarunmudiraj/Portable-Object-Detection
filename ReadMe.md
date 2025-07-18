@@ -57,11 +57,9 @@ model = YOLO("best.pt")
 
 ## 👤 User Dashboard
 
-| 🖼️ Screenshot | Description |
-|--------------|-------------|
-| <img src="assets/user-dashboard.png" width="600px"/> | 🏠 **User Home Dashboard** after admin approval |
-
----
+| 🖼️ Screenshot |
+|--------------|
+| <img src="assets/user-dashboard.png" width="600px"/> |
 
 ## 📷 Upload Detection Interface
 
