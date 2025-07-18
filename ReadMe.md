@@ -135,14 +135,14 @@ npm run dev
 ```bash
 Portable-Object-Detection/
 │
-├── frontend/               # React + Tailwind UI
-├── backend/                # Flask API with YOLOv8
-│   ├── app.py              # Main Flask app
-│   ├── users.json          # Stores user credentials
-│   ├── yolov8n.pt          # Pretrained YOLOv8 model
+├── frontend/               
+├── backend/                
+│   ├── app.py              
+│   ├── users.json         
+│   ├── yolov8n.pt          
 │   └── requirements.txt
-├── assets/                 # Screenshot images for README
-└── README.md               # 📄 This file
+├── assets/                 
+└── README.md               
 ```
 
 ---
