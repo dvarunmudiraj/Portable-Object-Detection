@@ -1,124 +1,67 @@
 # 🚀 Portable Object Detection in Real-Time
 
-A modern, responsive, and scalable full-stack application that enables **object detection from images in real-time** using the state-of-the-art **YOLOv8 model** from Ultralytics.
-
-Hosted on the cloud with **Vercel (Frontend)** and **Render (Backend)**, this project showcases seamless integration of **Computer Vision, Deep Learning, and Web Technologies**.
+This is a production-ready full-stack web application that enables real-time object detection using a custom-trained YOLOv8 model. Built with React (frontend), Flask (backend), and deployed using **Vercel** and **Render**, this project demonstrates modern AI-integrated software engineering practices.
 
 ---
 
-## 🌟 Key Features
+## 🎯 Key Features
 
-- 🎯 Object detection using **YOLOv8 (Ultralytics)** on uploaded images
-- 🔐 Token-based **User Authentication** (Sign Up, Login)
-- 🧑‍💼 Admin panel for user approval (pending/approved)
-- 📊 Detection output with bounding boxes, labels, and confidence scores
-- 🌐 Hosted on **Vercel + Render** with clean API integration
-- ⚡ Optimized for low-memory environments using `yolov8n.pt`
-- 📁 Persistent user data using a lightweight `users.json` file (no DB)
+- 🔍 Real-Time Object Detection using YOLOv8 (custom-trained in Google Colab)
+- 📸 Detect objects from uploaded images or live camera
+- 🔐 Admin approval system with user roles and login
+- 💾 Persistent user data via `users.json` (no database required)
+- 🌐 Seamless deployment: Frontend on **Vercel**, Backend on **Render**
 
 ---
 
-## 🖼️ Application Flow (Screenshots)
+## 🧠 Model Training
 
-### 1️⃣ Sign Up / Login
-Users first sign up or log in to the application.
+The model used here was **trained from scratch** using Ultralytics' YOLOv8 in **Google Colab**.
 
-<p align="center">
-  <img src="assets/signup.png" width="320"/>
-  <img src="assets/login.png" width="320"/>
-</p>
+### 📚 Training Workflow:
 
----
+1. Dataset prepared and labeled via Roboflow (exported in YOLOv8 format)
+2. Trained using `ultralytics` in Google Colab (GPU runtime)
+3. Exported the best model as `best.pt` (replaces `yolov8n.pt`)
+4. Integrated directly into the backend
 
-### 2️⃣ Admin User Dashboard (Approve or Reject)
-Admin can view **Pending** and **Approved** users and take actions accordingly.
-
-<p align="center">
-  <img src="assets/admin-dashboard.png" width="600"/>
-</p>
+```python
+# app.py
+from ultralytics import YOLO
+model = YOLO("best.pt")
+```
 
 ---
 
-### 3️⃣ User Dashboard - Upload Image for Detection
-Once approved, users land on their dashboard and upload images.
+## 🖥️ Application Flow (Screenshots)
 
-<p align="center">
-  <img src="assets/user-dashboard.png" width="600"/>
-</p>
+### 🔑 Step 1: User Signup / Login
+![Signup](assets/signup.png)
+![Login](assets/login.png)
 
----
+### 🛡️ Step 2: Admin Dashboard (Pending & Approved Users)
+![Admin Dashboard](assets/admin-dashboard.png)
 
-### 4️⃣ Detection Results (YOLOv8 Output)
-After submission, the YOLOv8 model returns detections with bounding boxes.
+### 📁 Step 3: Upload Images for Detection
+![Upload Image](assets/upload.png)
 
-<p align="center">
-  <img src="assets/detection-results-1.png" width="480"/>
-  <img src="assets/detection-results-2.png" width="480"/>
-</p>
+### 📸 Step 4: View Detection Results
+![Detection Result 1](assets/detection1.png)
+![Detection Result 2](assets/detection2.png)
 
----
-
-## 🧠 YOLOv8 Model
-
-- **Model**: [`yolov8n.pt`](https://github.com/ultralytics/ultralytics/releases)
-- **Framework**: [Ultralytics YOLOv8](https://docs.ultralytics.com/)
-- **Use case**: Fast, accurate detection with minimal resource usage (Render compatible)
+### 🧑‍💼 Step 5: User Dashboard (Access Detection Features)
+![User Dashboard](assets/user-dashboard.png)
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer     | Tech Used                                     |
-|-----------|-----------------------------------------------|
-| 👨‍🎨 Frontend | React, Vite, Tailwind CSS                   |
-| 🧪 Backend  | Flask, Python, Gunicorn, OpenCV, Ultralytics |
-| 📦 Model    | YOLOv8 (Nano - `yolov8n.pt`)                 |
-| ☁️ Hosting  | Vercel (UI), Render (API)                    |
-
----
-
-## 📦 Installation (Local Dev)
-
-### 1️⃣ Clone the Repository
-
-```bash
-git clone https://github.com/dvarunmudiraj/Portable-Object-Detection.git
-cd Portable-Object-Detection
-```
-
-### 2️⃣ Backend Setup
-
-```bash
-cd backend
-pip install -r requirements.txt
-python app.py
-```
-
-Ensure the `yolov8n.pt` model file is placed in the backend folder.
-
-### 3️⃣ Frontend Setup
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
----
-
-## 🚀 Deployment
-
-### ✅ Frontend (Vercel)
-- Configure the root as `frontend/`
-- Auto-detects React/Vite
-- No environment variables needed
-
-### ✅ Backend (Render)
-- Configure root as `backend/`
-- **Start Command**: `gunicorn app:app`
-- **Build Command**: `pip install -r requirements.txt`
-- **Instance**: Use Starter ($7/month) or Free (with model size adjusted)
-- Uses `users.json` to persist user info
+| Layer      | Technology           |
+|------------|----------------------|
+| Frontend   | React + Tailwind CSS |
+| Backend    | Flask + YOLOv8       |
+| Model      | YOLOv8 (custom-trained) |
+| Deployment | Vercel (frontend), Render (backend) |
 
 ---
 
@@ -135,25 +78,15 @@ npm run dev
 ```bash
 Portable-Object-Detection/
 │
-├── frontend/               
-├── backend/                
-│   ├── app.py              
-│   ├── users.json         
-│   ├── yolov8n.pt          
-│   └── requirements.txt
-├── assets/                 
-└── README.md               
+├── frontend/                # React app
+├── backend/                 # Flask app
+│   ├── app.py               # Main entry point
+│   ├── users.json           # Persistent user data
+│   ├── best.pt              # Custom-trained YOLOv8 model
+│   └── requirements.txt     # Python dependencies
+├── assets/                  # Screenshots for README
+└── README.md                # Project documentation
 ```
-
----
-
-## 👨‍💻 Author
-
-**Varun Mudiraj**  
-📍 Hyderabad, India  
-🎓 Final Year B.Tech @ ACE Engineering College  
-📧 [varunmudiraj154@gmail.com](mailto:varunmudiraj154@gmail.com)  
-🔗 [GitHub Profile](https://github.com/dvarunmudiraj)
 
 ---
 
@@ -166,6 +99,16 @@ Portable-Object-Detection/
 > - 🚀 Deployment skills with Vercel & Render  
 >
 > This is the kind of work that demonstrates readiness for **real-world projects at scale**.
+
+---
+
+## 👨‍💻 Author
+
+**Varun D**  
+📍 Hyderabad, India  
+🎓 Final Year B.Tech @ ACE Engineering College  
+📧 [varunmudiraj154@gmail.com](mailto:varunmudiraj154@gmail.com)  
+🔗 [GitHub Profile](https://github.com/dvarunmudiraj)
 
 ---
 
