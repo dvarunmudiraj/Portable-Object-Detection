@@ -33,26 +33,50 @@ model = YOLO("best.pt")
 
 ---
 
-## 🖥️ Application Flow (Screenshots)
+## 📸 Demo Screens
 
-### 🔑 Step 1: User Signup / Login
-![Signup](assets/signup.png)
-![Login](assets/login.png)
+### 🔐 Login & Signup
 
-### 🛡️ Step 2: Admin Dashboard (Pending & Approved Users)
-![Admin Dashboard](assets/admin-dashboard.png)
-
-### 📁 Step 3: Upload Images for Detection
-![Upload Image](assets/upload.png)
-
-### 📸 Step 4: View Detection Results
-![Detection Result 1](assets/detection-results-1.png)
-![Detection Result 2](assets/detection-results-2.png)
-
-### 🧑‍💼 Step 5: User Dashboard (Access Detection Features)
-![User Dashboard](assets/user-dashboard.png)
+<p align="center">
+  <img src="assets/signup.png" width="45%" />
+  <img src="assets/login.png" width="45%" />
+</p>
 
 ---
+
+### 🛡️ Admin Dashboard – Approve or Reject Users
+
+<p align="center">
+  <img src="assets/admin-dashboard.png" width="90%" />
+</p>
+
+---
+
+### 🖼️ Upload Image for Detection
+
+<p align="center">
+  <img src="assets/upload.png" width="90%" />
+</p>
+
+---
+
+### ✅ Detection Results
+
+<p align="center">
+  <img src="assets/detection-results-1.png" width="45%" />
+  <img src="assets/detection-results-2.png" width="45%" />
+</p>
+
+---
+
+### 👤 User Dashboard
+
+<p align="center">
+  <img src="assets/user-dashboard.png" width="90%" />
+</p>
+
+---
+
 
 ## 🛠️ Tech Stack
 
