@@ -140,4 +140,4 @@ Portable-Object-Detection/
 
 If you liked this project, consider giving it a ⭐ to support my work.
 
-```
+---
