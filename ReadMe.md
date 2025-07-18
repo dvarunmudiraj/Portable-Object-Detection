@@ -40,41 +40,37 @@ model = YOLO("best.pt")
 
 ## 🔐 Authentication Screens
 
-| 🖼️ Screenshot | Description |
-|--------------|-------------|
-| <img src="assets/signup.png" width="300px"/> | ✍️ **User Sign Up Page** |
-| <img src="assets/login.png" width="300px"/> | 🔐 **User Login Page** |
+| <img src="assets/signup.png" width="300px"/> | <img src="assets/login.png" width="300px"/> |
+|:--:|:--:|
 
 ---
 
 ## 🛠️ Admin Dashboard
 
-| 🖼️ Screenshot | Description |
-|--------------|-------------|
-| <img src="assets/admin-dashboard.png" width="600px"/> | 🧑‍💼 **Admin Panel** for approving or rejecting users |
+| <img src="assets/admin-dashboard.png" width="600px"/> |
+|:--:|
 
 ---
 
 ## 👤 User Dashboard
 
-| 🖼️ Screenshot |
-|--------------|
 | <img src="assets/user-dashboard.png" width="600px"/> |
-
-## 📷 Upload Detection Interface
-
-| 🖼️ Screenshot | Description |
-|--------------|-------------|
-| <img src="assets/upload.png" width="600px"/> | 📤 **Upload Interface** to submit images for detection |
+|:--:|
 
 ---
 
-## 🧪 Detection Results (YOLOv8)
+## 📷 Upload Detection Interface
 
-| 🖼️ Screenshot | Description |
-|--------------|-------------|
-| <img src="assets/detection1.png" width="300px"/> | 🎯 **Detection Example 1** |
-| <img src="assets/detection2.png" width="300px"/> | 🎯 **Detection Example 2** |
+| <img src="assets/upload.png" width="600px"/> |
+|:--:|
+
+---
+
+## 🧪 Detection Results
+
+| <img src="assets/detection1.png" width="300px"/> | <img src="assets/detection2.png" width="300px"/> |
+|:--:|:--:|
+
 
 ---
 
