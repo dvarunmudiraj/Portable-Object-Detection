@@ -68,7 +68,7 @@ model = YOLO("best.pt")
 
 ## 🧪 Detection Results
 
-| <img src="assets/detection1.png" width="300px"/> | <img src="assets/detection2.png" width="300px"/> |
+| <img src="assets/detection-results-1.png" width="300px"/> | <img src="assets/detection-results-2.png" width="300px"/> |
 |:--:|:--:|
 
 
